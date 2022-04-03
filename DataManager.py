@@ -7,8 +7,8 @@ import pandas as pd
 
 from datetime import datetime
 
-from EZBT.decorators import only_implemented_types
-from EZBT.exceptions import WrongExchange, WrongMarket, WrongLimit, WrongTimeframe, WrongSince
+from decorators import only_implemented_types
+from exceptions import WrongExchange, WrongMarket, WrongLimit, WrongTimeframe, WrongSince
 
 
 class DataManager:
