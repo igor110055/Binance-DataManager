@@ -1,4 +1,4 @@
-from EZBT.exceptions import TypeNotImplemented
+from exceptions import TypeNotImplemented
 
 
 def only_implemented_types(func):
