@@ -1,4 +1,4 @@
-from EZBT.constants import Colors
+from constants import Colors
 
 
 class WrongExchange(BaseException):
