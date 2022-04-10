@@ -1,6 +1,7 @@
 import os.path
 import threading
 import time
+from types import NoneType
 
 import ccxt
 import pandas as pd
@@ -20,7 +21,7 @@ class DataManager:
 
     # constructor
     @only_implemented_types
-    def __init__(self, path: (str, None) = "",
+    def __init__(self, path: (str, NoneType) = "",
                  market: str = "BTC/USDT",
                  timeframe: str = "1d",
                  since: int = 1640991600,
