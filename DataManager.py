@@ -182,7 +182,7 @@ class DataManager:
             :param lt: limit parameter
             :param rid: request id
             """
-            downloaded = self.exchange.fetch_ohlcv(symbol="BTC/USDT", timeframe="1h", since=int(ts), limit=lt)
+            downloaded = self.exchange.fetch_ohlcv(symbol=self.market, timeframe=self.timeframe, since=int(ts), limit=lt)
             temp_responses[rid] = (pd.DataFrame(downloaded))
 
         current_rid = 0  # current request id
