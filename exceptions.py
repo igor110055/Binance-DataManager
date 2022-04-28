@@ -1,4 +1,4 @@
-from constants import Colors
+from BinanceDataManager.constants import Colors
 
 
 class WrongExchange(BaseException):

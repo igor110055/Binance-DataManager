@@ -1,4 +1,4 @@
-from exceptions import TypeNotImplemented
+from BinanceDataManager.exceptions import TypeNotImplemented
 
 
 def only_implemented_types(func):

@@ -8,9 +8,8 @@ import pandas as pd
 
 from datetime import datetime
 
-from decorators import only_implemented_types
-from exceptions import WrongExchange, WrongMarket, WrongLimit, WrongTimeframe, WrongSince
-
+from BinanceDataManager.decorators import only_implemented_types
+from BinanceDataManager.exceptions import WrongExchange, WrongMarket, WrongLimit, WrongTimeframe, WrongSince
 
 class DataManager:
     """
