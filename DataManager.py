@@ -128,13 +128,14 @@ class DataManager:
         def merge_dataframes(main: pd.DataFrame, df_to_merge: pd.DataFrame):
             """
             - Merge two dataframes, remove the last line of the first df
-
             :param main: main dataframe
             :param df_to_merge: dataframe to merge
             :return: a new dataframe
             """
             if main.empty:
                 return df_to_merge
+            elif df_to_merge.empty:
+                return main
 
             # remove the last line of the main dataframe
             main.drop(len(main) - 1, axis=0, inplace=True)
@@ -164,6 +165,8 @@ class DataManager:
         while remaining_limit > 0:
             # we generate the timestamps
             current_timestamp += offset
+            if current_timestamp > time.time()*1000:
+                remaining_limit = 0
             data.append([current_timestamp, remaining_limit + 1])
             remaining_limit -= 999
 
@@ -181,7 +184,8 @@ class DataManager:
             :param lt: limit parameter
             :param rid: request id
             """
-            downloaded = self.exchange.fetch_ohlcv(symbol=self.market, timeframe=self.timeframe, since=int(ts), limit=lt)
+            downloaded = self.exchange.fetch_ohlcv(symbol=self.market, timeframe=self.timeframe, since=int(ts),
+                                                   limit=lt)
             temp_responses[rid] = (pd.DataFrame(downloaded))
 
         current_rid = 0  # current request id
@@ -246,6 +250,7 @@ class DataManager:
                         time.sleep(5)
 
                     print("Resuming download")
+            responses.update(temp_responses)  # we move responses
 
         # we merge all the dataframes
         print("\n" * 50)
